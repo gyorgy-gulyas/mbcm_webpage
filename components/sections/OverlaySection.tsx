@@ -46,7 +46,7 @@ export function OverlaySection({
       className="pointer-events-none relative flex h-screen w-full px-6 md:px-14 lg:px-20"
     >
       <div
-        className={`pointer-events-auto flex h-full w-full max-w-7xl mx-auto flex-col justify-center ${alignClass}`}
+        className={`pointer-events-auto flex h-full w-full max-w-7xl mx-auto flex-col justify-center pt-20 md:pt-24 ${alignClass}`}
       >
         <div
           className={`max-w-xl rounded-3xl px-7 py-9 md:px-10 md:py-12 transition-all duration-1000 ease-out ${

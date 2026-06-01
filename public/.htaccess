@@ -1,0 +1,190 @@
+# ============================================================================
+# MBCM — Mercedes-Benz Classic Magyarország Club
+# .htaccess — Apache konfiguráció a statikus Next.js exporthoz
+# ============================================================================
+# Helye: a webszerver dokumentum-gyökerében (ugyanott, ahol az index.html van).
+# Apache 2.4+ kompatibilis. mod_rewrite, mod_deflate, mod_expires, mod_headers
+# szükséges (a legtöbb shared hostingon alapból bekapcsolva).
+# ============================================================================
+
+# Mappa-listázás kikapcsolása
+Options -Indexes
+
+# Default index fájl
+DirectoryIndex index.html
+
+# Egyedi 404 oldal (a Next.js által generált)
+ErrorDocument 404 /404.html
+
+
+# ----------------------------------------------------------------------------
+# URL kezelés (mod_rewrite)
+# ----------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # --- HTTPS kényszerítése (kapcsold be amikor SSL be van állítva) ---
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # --- www → non-www átirányítás (vagy fordítva, ha az kell) ---
+  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  # RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+  # --- Trailing slash konzisztencia (a next.config trailingSlash: true miatt) ---
+  # /tagok → /tagok/ átirányítás (kivéve a fájlokra: .js, .css, .pdf, stb.)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !\.\w{2,5}$
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.+)$ /$1/ [R=301,L]
+</IfModule>
+
+
+# ----------------------------------------------------------------------------
+# MIME típusok (egyes shared hostokon nincs alapból minden)
+# ----------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType model/gltf-binary               .glb
+  AddType model/gltf+json                 .gltf
+  AddType video/mp4                       .mp4
+  AddType image/webp                      .webp
+  AddType image/avif                      .avif
+  AddType font/woff2                      .woff2
+  AddType application/manifest+json       .webmanifest
+  AddType application/wasm                .wasm
+</IfModule>
+
+
+# ----------------------------------------------------------------------------
+# Tömörítés (gzip / deflate)
+# A 3D modell és videó már tömörítve van, ezeket nem tömörítjük újra.
+# ----------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/atom+xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE application/font-woff
+  AddOutputFilterByType DEFLATE application/font-woff2
+
+  # Már tömörített típusokat hagyjuk békén
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp|avif|mp4|webm|woff2|glb|gltf|pdf|zip)$ no-gzip dont-vary
+</IfModule>
+
+
+# ----------------------------------------------------------------------------
+# Cache-elés (Expires + Cache-Control)
+# ----------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                          "access plus 1 month"
+
+  # HTML: mindig friss, hogy gyorsan kijöjjön a frissítés
+  ExpiresByType text/html                 "access plus 0 seconds"
+
+  # Next.js által hash-elt asset-ek (versionált fájlnév)
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType text/css                  "access plus 1 year"
+
+  # Képek
+  ExpiresByType image/jpeg                "access plus 1 month"
+  ExpiresByType image/png                 "access plus 1 month"
+  ExpiresByType image/webp                "access plus 1 month"
+  ExpiresByType image/avif                "access plus 1 month"
+  ExpiresByType image/svg+xml             "access plus 1 month"
+  ExpiresByType image/x-icon              "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon  "access plus 1 year"
+
+  # Videók
+  ExpiresByType video/mp4                 "access plus 1 month"
+  ExpiresByType video/webm                "access plus 1 month"
+
+  # 3D modellek
+  ExpiresByType model/gltf-binary         "access plus 1 month"
+  ExpiresByType model/gltf+json           "access plus 1 month"
+
+  # Betűtípusok
+  ExpiresByType font/woff2                "access plus 1 year"
+  ExpiresByType application/font-woff2    "access plus 1 year"
+
+  # PDF-ek (jogi dokumentumok — heti frissítés-lehetőség)
+  ExpiresByType application/pdf           "access plus 1 week"
+</IfModule>
+
+# Cache-Control finomhangolás (mod_headers)
+<IfModule mod_headers.c>
+  # HTML mindig revalidálva
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # Hash-elt Next.js bundle-ek (path tartalmazza a /_next/static/-ot) örökre cache-elhetőek
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Képek, videók, modellek — közepes cache
+  <FilesMatch "\.(jpg|jpeg|png|webp|avif|svg|mp4|webm|glb|gltf)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # PDF — rövid cache
+  <FilesMatch "\.pdf$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
+
+
+# ----------------------------------------------------------------------------
+# Biztonsági fejlécek
+# ----------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # MIME-sniffing letiltása
+  Header set X-Content-Type-Options       "nosniff"
+
+  # Keretbe ágyazás csak a saját domainről
+  Header set X-Frame-Options              "SAMEORIGIN"
+
+  # Referrer info átadása csökkentett formában külső linkeknél
+  Header set Referrer-Policy              "strict-origin-when-cross-origin"
+
+  # FLoC opt-out (régi Chrome tracking)
+  Header set Permissions-Policy           "interest-cohort=()"
+
+  # HSTS (kapcsold be amikor a HTTPS stabil és tesztelt)
+  # Header set Strict-Transport-Security  "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>
+
+
+# ----------------------------------------------------------------------------
+# Érzékeny fájlok védelme
+# ----------------------------------------------------------------------------
+<FilesMatch "(^\.|composer\.(json|lock)|package\.(json|lock)|package-lock\.json|yarn\.lock|tsconfig.*\.json|next\.config\..*|README\.md)$">
+  Require all denied
+</FilesMatch>
+
+
+# ----------------------------------------------------------------------------
+# Régi WordPress URL-ek átirányítása (opcionális — kommentelve)
+# Ha a régi mbcm.hu/portfolio-item/* vagy hasonló URL-ekre még jönnek
+# látogatások (pl. Google találatokról), érdemes átirányítani.
+# ----------------------------------------------------------------------------
+# <IfModule mod_rewrite.c>
+#   RewriteRule ^portfolio-item/zwack-.+$           /bpcgp/    [R=301,L]
+#   RewriteRule ^portfolio-item/kiskorosi-.+$       /bpcgp/    [R=301,L]
+#   RewriteRule ^rolunk/?$                          /          [R=301,L]
+#   RewriteRule ^kezdolap/?$                        /          [R=301,L]
+#   RewriteRule ^wp-admin/.*$                       /          [R=301,L]
+#   RewriteRule ^wp-content/.*$                     /          [R=301,L]
+# </IfModule>
