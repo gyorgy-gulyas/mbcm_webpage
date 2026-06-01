@@ -21,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hu" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full bg-background text-foreground grain">
+      <body
+        className="min-h-full bg-background text-foreground grain"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
