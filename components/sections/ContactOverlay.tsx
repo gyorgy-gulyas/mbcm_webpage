@@ -1,12 +1,18 @@
 "use client";
 
 import { OverlaySection } from "./OverlaySection";
+import { EmailLink } from "../EmailLink";
 
 const OFFICERS = [
   {
     name: "Marosi György",
     role: "Elnök",
     email: "president@mbcm.hu",
+  },
+  {
+    name: "Barkó Imre",
+    role: "Alelnök",
+    email: "vice-president@mbcm.hu",
   },
   {
     name: "Lastofka Péter",
@@ -46,23 +52,12 @@ export function ContactOverlay() {
             <p className="text-[10px] font-normal uppercase tracking-[0.42em] text-on-dark-mute">
               {o.role}
             </p>
-            <p className="mt-3 text-[clamp(1.5rem,3.5vw,2.25rem)] font-extralight leading-tight text-on-dark">
+            <p className="mt-3 text-[clamp(1.15rem,2.4vw,1.6rem)] font-extralight leading-tight text-on-dark">
               {o.name}
             </p>
-            <a
-              href={`mailto:${o.email}`}
-              className="group mt-4 inline-flex items-center gap-3 text-sm font-light text-on-dark-soft transition-colors hover:text-on-dark"
-            >
-              <span className="border-b border-on-dark-soft/40 pb-0.5 transition-colors group-hover:border-on-dark">
-                {o.email}
-              </span>
-              <span
-                aria-hidden
-                className="text-base transition-transform duration-300 group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </a>
+            <div className="mt-4 text-sm">
+              <EmailLink email={o.email} dark />
+            </div>
           </div>
         ))}
       </div>

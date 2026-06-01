@@ -55,8 +55,8 @@ export function OverlaySection({
               : "opacity-0 translate-y-6"
           } ${
             toneOnDark
-              ? "bg-surface-dark/40 backdrop-blur-sm border border-on-dark/10 text-on-dark"
-              : "bg-background/35 backdrop-blur-sm border border-foreground/8 text-foreground"
+              ? "bg-surface-dark/60 backdrop-blur-md border border-on-dark/15 text-on-dark"
+              : "bg-background/55 backdrop-blur-md border border-foreground/15 text-foreground"
           }`}
         >
           {children}

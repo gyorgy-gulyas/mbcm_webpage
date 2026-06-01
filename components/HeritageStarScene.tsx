@@ -16,7 +16,7 @@ export function HeritageStarScene() {
       <directionalLight position={[3, 4, 5]} intensity={1.8} color="#ffffff" />
       <directionalLight position={[-3, -2, -2]} intensity={0.6} color="#a0a8b0" />
       <Suspense fallback={null}>
-        <MercedesStar tilt={0.18} spin={0.1} />
+        <MercedesStar tilt={0.18} spin={0.5} />
         <Environment preset="warehouse" environmentIntensity={0.9} />
         <ContactShadows
           position={[0, -1.6, 0]}

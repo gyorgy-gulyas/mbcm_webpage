@@ -14,14 +14,13 @@ export function AboutOverlay() {
         Tíz alapítóból
         <br />
         <span className="font-extralight text-foreground-soft">
-          közel száz tagig.
+          közel negyven tagig.
         </span>
       </h2>
 
       <p className="mt-8 max-w-md text-base font-light leading-relaxed text-foreground-soft">
         2003 tavaszán tíz alapító taggal indult, ma egy két évtizede aktív
-        közösség. A klub zárt szervezet — a tagság próbaidős, meglévő tagok
-        ajánlásával.
+        közösség.
       </p>
 
       <dl className="mt-12 grid grid-cols-3 gap-6 text-left">
@@ -37,14 +36,14 @@ export function AboutOverlay() {
           <dt className="text-[10px] font-normal uppercase tracking-[0.3em] text-foreground-mute">
             Tagok
           </dt>
-          <dd className="mt-2 text-3xl font-extralight text-foreground">80+</dd>
+          <dd className="mt-2 text-3xl font-extralight text-foreground">36</dd>
         </div>
         <div>
           <dt className="text-[10px] font-normal uppercase tracking-[0.3em] text-foreground-mute">
             Klasszikusok
           </dt>
           <dd className="mt-2 text-3xl font-extralight text-foreground">
-            120+
+            100+
           </dd>
         </div>
       </dl>

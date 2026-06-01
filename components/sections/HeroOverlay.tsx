@@ -19,8 +19,8 @@ export function HeroOverlay() {
       </h1>
 
       <p className="mt-10 max-w-lg text-base font-light leading-relaxed text-foreground-soft md:text-[17px]">
-        A Stuttgart-i Mercedes-Benz Classic Club Management által elismert
-        magyarországi márkaklub. Klasszikus járművek, közös utak, közös műhelyek.
+        A Mercedes-Benz Classic által hivatalosan elismert magyarországi
+        márkaklub. Klasszikus járművek, közös programok és maradandó élmények.
       </p>
 
       <p className="mt-12 text-[11px] font-normal uppercase tracking-[0.32em] text-foreground-mute">

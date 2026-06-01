@@ -1,13 +1,13 @@
+import Image from "next/image";
+import { EmailLink } from "./EmailLink";
+
 export function Footer() {
   return (
     <footer className="relative z-20 w-full border-t border-on-dark/15 bg-surface-dark-elev text-on-dark-soft">
       <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-24">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-10">
           <div className="md:col-span-2">
-            <p className="text-[10px] font-normal uppercase tracking-[0.32em] text-on-dark-mute">
-              Hivatalos név
-            </p>
-            <p className="mt-3 text-lg font-light leading-tight text-on-dark">
+            <p className="text-lg font-light leading-tight text-on-dark">
               Mercedes-Benz Classic
               <br />
               Magyarország Club
@@ -15,46 +15,40 @@ export function Footer() {
             <p className="mt-3 text-[11px] font-normal uppercase tracking-[0.28em] text-on-dark-mute">
               MBCM · 2003 óta
             </p>
+            <div className="mt-6 h-[72px] w-[72px] overflow-hidden rounded-full bg-white">
+              <Image
+                src="/images/mbcm-logo.jpg"
+                alt="MBCM"
+                width={144}
+                height={144}
+                priority={false}
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
 
           <div>
-            <p className="text-[10px] font-normal uppercase tracking-[0.32em] text-on-dark-mute">
-              Cím
-            </p>
-            <address className="mt-3 not-italic text-sm font-light leading-relaxed text-on-dark-soft">
-              1113 Budapest
+            <address className="not-italic text-sm font-light leading-relaxed text-on-dark-soft">
+              1239 Budapest
               <br />
-              Váci út 96-98
+              Haraszti út 48
             </address>
 
-            <p className="mt-8 text-[10px] font-normal uppercase tracking-[0.32em] text-on-dark-mute">
-              Kapcsolat
-            </p>
-            <ul className="mt-3 space-y-2 text-sm font-light text-on-dark-soft">
+            <ul className="mt-6 space-y-3 text-sm font-light text-on-dark-soft">
               <li>
-                <a
-                  href="mailto:president@mbcm.hu"
-                  className="transition-colors hover:text-on-dark"
-                >
-                  president@mbcm.hu
-                </a>
+                <EmailLink email="president@mbcm.hu" dark />
               </li>
               <li>
-                <a
-                  href="mailto:secretary@mbcm.hu"
-                  className="transition-colors hover:text-on-dark"
-                >
-                  secretary@mbcm.hu
-                </a>
+                <EmailLink email="vice-president@mbcm.hu" dark />
+              </li>
+              <li>
+                <EmailLink email="secretary@mbcm.hu" dark />
               </li>
             </ul>
           </div>
 
           <div>
-            <p className="text-[10px] font-normal uppercase tracking-[0.32em] text-on-dark-mute">
-              Jogi
-            </p>
-            <dl className="mt-3 space-y-3 text-sm font-light text-on-dark-soft">
+            <dl className="space-y-3 text-sm font-light text-on-dark-soft">
               <div>
                 <dt className="text-[10px] uppercase tracking-[0.25em] text-on-dark-mute">
                   Adószám
@@ -77,18 +71,23 @@ export function Footer() {
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[10px] font-normal uppercase tracking-[0.28em] text-on-dark-mute">
             <li>
-              <a href="#" className="transition-colors hover:text-on-dark">
+              <a
+                href="/legal/adatvedelem.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-on-dark"
+              >
                 Adatvédelem
               </a>
             </li>
             <li>
-              <a href="#" className="transition-colors hover:text-on-dark">
+              <a
+                href="/legal/impresszum.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-on-dark"
+              >
                 Impresszum
-              </a>
-            </li>
-            <li>
-              <a href="#" className="transition-colors hover:text-on-dark">
-                Cookie
               </a>
             </li>
           </ul>

@@ -19,13 +19,13 @@ export function GalleryOverlay() {
         </span>
       </h2>
 
-      <p className="mx-auto mt-8 max-w-md text-base font-light leading-relaxed text-foreground-soft">
-        2003 óta minden találkozóról, túráról, eseményről fotók készülnek.
-        Klubunk vizuális archívuma — saját képek, vendég fotósoktól és
-        klubtagoktól.
+      <p className="mx-auto mt-8 max-w-lg text-base font-light leading-relaxed text-foreground">
+        2003 óta közös utak, találkozások és rendezvények formálják klubunk
+        történetét. Az évek során számtalan élmény, barátság és felejthetetlen
+        pillanat született, amelyek közül néhányat fényképek is megőriztek.
       </p>
 
-      <dl className="mx-auto mt-12 grid grid-cols-3 gap-8 text-center">
+      <dl className="mx-auto mt-12 grid max-w-sm grid-cols-2 gap-8 text-center">
         <div>
           <dt className="text-[10px] font-normal uppercase tracking-[0.3em] text-foreground-mute">
             Év
@@ -36,13 +36,7 @@ export function GalleryOverlay() {
           <dt className="text-[10px] font-normal uppercase tracking-[0.3em] text-foreground-mute">
             Esemény
           </dt>
-          <dd className="mt-2 text-3xl font-extralight text-foreground">450+</dd>
-        </div>
-        <div>
-          <dt className="text-[10px] font-normal uppercase tracking-[0.3em] text-foreground-mute">
-            Fotó
-          </dt>
-          <dd className="mt-2 text-3xl font-extralight text-foreground">12k+</dd>
+          <dd className="mt-2 text-3xl font-extralight text-foreground">200+</dd>
         </div>
       </dl>
     </OverlaySection>

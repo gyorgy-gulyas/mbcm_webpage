@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { OverlaySection } from "./OverlaySection";
 
 const STEPS = [
@@ -58,6 +59,16 @@ export function MembershipOverlay() {
           </li>
         ))}
       </ol>
+
+      <Link
+        href="/tagok"
+        className="group mt-12 inline-flex items-center gap-3 text-[11px] font-normal uppercase tracking-[0.3em] text-foreground-soft transition-colors hover:text-foreground"
+      >
+        <span>Klubtagok megtekintése</span>
+        <span aria-hidden className="transition-transform group-hover:translate-x-1">
+          →
+        </span>
+      </Link>
     </OverlaySection>
   );
 }

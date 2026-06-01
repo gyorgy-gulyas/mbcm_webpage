@@ -22,8 +22,8 @@ const STAGES: Stage[] = [
   { pos: [2.4, 4.6, 4.4], look: [0, 0.3, 0] },
   // 3 — BPCGP: left-low close
   { pos: [-3.6, 1.2, 5.0], look: [0, 0.5, 0] },
-  // 4 — Események: rear-left 3/4
-  { pos: [-4.6, 1.4, -2.6], look: [0, 0.45, 0] },
+  // 4 — Események: rear-left 3/4, pulled back for breathing room
+  { pos: [-5.6, 1.8, -4.4], look: [0, 0.45, 0] },
   // 5 — Galéria: pure rear, pulled back
   { pos: [0, 1.9, -7.4], look: [0, 0.5, 0] },
   // 6 — Magazin: rear-right 3/4, pulled back for breathing room
