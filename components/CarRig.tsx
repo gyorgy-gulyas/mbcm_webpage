@@ -14,9 +14,25 @@ type Stage = {
 };
 
 const STAGES: Stage[] = [
+  // 0 — Hero: front-right 3/4
   { pos: [4.8, 1.8, 5.6], look: [0, 0.3, 0] },
+  // 1 — About: pure right side
   { pos: [6.2, 1.4, 0.4], look: [0, 0.3, 0] },
+  // 2 — Timeline: top-right orbit
   { pos: [2.4, 4.6, 4.4], look: [0, 0.3, 0] },
+  // 3 — BPCGP: left-low close
+  { pos: [-3.6, 1.2, 5.0], look: [0, 0.5, 0] },
+  // 4 — Események: rear-left 3/4
+  { pos: [-4.6, 1.4, -2.6], look: [0, 0.45, 0] },
+  // 5 — Galéria: pure rear, pulled back
+  { pos: [0, 1.9, -7.4], look: [0, 0.5, 0] },
+  // 6 — Magazin: rear-right 3/4, pulled back for breathing room
+  { pos: [5.6, 1.8, -4.6], look: [0, 0.45, 0] },
+  // 7 — Tagság: front-right close, slightly elevated
+  { pos: [3.6, 1.6, 4.6], look: [0, 0.4, 0] },
+  // 8 — Kapcsolat: mid pull-back, slightly elevated, centered
+  { pos: [0, 2.0, 7.2], look: [0, 0.5, 0] },
+  // 9 — Heritage: pull back, final wide
   { pos: [0.2, 1.6, 9.2], look: [0, 0.4, 0] },
 ];
 

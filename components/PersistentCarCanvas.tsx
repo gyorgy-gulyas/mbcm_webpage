@@ -1,8 +1,8 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Environment, ContactShadows, Center } from "@react-three/drei";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect } from "react";
 import { CarRig } from "./CarRig";
 import { getScrollProgress } from "@/lib/scrollProgress";
 
@@ -28,16 +28,6 @@ function BackdropTone() {
   }, []);
 
   return null;
-}
-
-function EnvSwap() {
-  const [variant, setVariant] = useState<"studio" | "warehouse">("studio");
-  useFrame(() => {
-    const p = getScrollProgress();
-    const next = p > 0.62 ? "warehouse" : "studio";
-    if (next !== variant) setVariant(next);
-  });
-  return <Environment preset={variant} environmentIntensity={1.0} />;
 }
 
 export function PersistentCarCanvas() {
@@ -69,7 +59,7 @@ export function PersistentCarCanvas() {
             <Center disableY>
               <CarRig />
             </Center>
-            <EnvSwap />
+            <Environment preset="studio" environmentIntensity={1.0} />
             <ContactShadows
               position={[0, -0.001, 0]}
               opacity={0.4}

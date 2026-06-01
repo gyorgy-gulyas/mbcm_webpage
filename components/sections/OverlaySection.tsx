@@ -49,16 +49,15 @@ export function OverlaySection({
         className={`pointer-events-auto flex h-full w-full max-w-7xl mx-auto flex-col justify-center ${alignClass}`}
       >
         <div
-          className={`max-w-xl transition-all duration-1000 ease-out ${
+          className={`max-w-xl rounded-3xl px-7 py-9 md:px-10 md:py-12 transition-all duration-1000 ease-out ${
             visible
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-6"
-          } ${toneOnDark ? "text-on-dark" : "text-foreground"}`}
-          style={{
-            textShadow: toneOnDark
-              ? "0 1px 24px rgba(0,0,0,0.4)"
-              : "0 1px 18px rgba(220,220,216,0.7)",
-          }}
+          } ${
+            toneOnDark
+              ? "bg-surface-dark/40 backdrop-blur-sm border border-on-dark/10 text-on-dark"
+              : "bg-background/35 backdrop-blur-sm border border-foreground/8 text-foreground"
+          }`}
         >
           {children}
         </div>

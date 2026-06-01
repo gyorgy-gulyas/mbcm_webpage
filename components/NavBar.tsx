@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 const NAV = [
   { label: "Klub", href: "#klub" },
   { label: "Események", href: "#esemenyek" },
-  { label: "Tagság", href: "#tagsag" },
-  { label: "Magazin", href: "#magazin" },
   { label: "Galéria", href: "#galeria" },
+  { label: "Magazin", href: "#magazin" },
+  { label: "Tagság", href: "#tagsag" },
+  { label: "Kapcsolat", href: "#kapcsolat" },
 ];
 
 export function NavBar() {
@@ -22,7 +23,7 @@ export function NavBar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-[2400ms] ease-out ${
         scrolled
           ? "bg-surface-dark/95 backdrop-blur-lg border-b border-line-dark shadow-[0_8px_28px_-12px_rgba(0,0,0,0.5)]"
           : "bg-transparent"
@@ -31,7 +32,7 @@ export function NavBar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-10">
         <a href="/" className="group">
           <span
-            className={`text-sm font-medium tracking-[0.32em] transition-colors ${
+            className={`text-sm font-medium tracking-[0.32em] transition-colors duration-[2000ms] ${
               scrolled
                 ? "text-on-dark group-hover:text-on-dark-soft"
                 : "text-foreground group-hover:text-foreground-soft"
@@ -46,7 +47,7 @@ export function NavBar() {
             <li key={item.href}>
               <a
                 href={item.href}
-                className={`text-[11px] font-normal uppercase tracking-[0.28em] transition-colors ${
+                className={`text-[11px] font-normal uppercase tracking-[0.28em] transition-colors duration-[2000ms] ${
                   scrolled
                     ? "text-on-dark-soft hover:text-on-dark"
                     : "text-foreground-soft hover:text-foreground"

@@ -1,15 +1,21 @@
 "use client";
 
+import Image from "next/image";
 import { OverlaySection } from "./OverlaySection";
-import { MercedesStarSVG } from "../MercedesStarSVG";
 
 export function HeritageOverlay() {
   return (
     <OverlaySection id="heritage" align="center" toneOnDark>
-      <MercedesStarSVG
-        className="mx-auto mb-10 text-on-dark"
-        size={72}
-      />
+      <div className="mx-auto mb-10 h-[140px] w-[140px] overflow-hidden rounded-full bg-white shadow-[0_10px_32px_-12px_rgba(0,0,0,0.6)]">
+        <Image
+          src="/images/mbcm-logo.jpg"
+          alt="Mercedes-Benz Classic Magyarország"
+          width={280}
+          height={280}
+          priority={false}
+          className="h-full w-full object-cover"
+        />
+      </div>
 
       <div className="flex items-center justify-center gap-4 text-[10px] font-normal uppercase tracking-[0.4em] text-on-dark-mute">
         <span className="h-px w-12 bg-on-dark-mute/60" />
@@ -28,12 +34,8 @@ export function HeritageOverlay() {
         magyarországi márkaklub. 2003 óta gyűjtjük a közös történetet.
       </p>
 
-      <p className="mt-14 text-[10px] font-normal uppercase tracking-[0.4em] text-on-dark-mute">
+      <p className="mt-12 text-[10px] font-normal uppercase tracking-[0.4em] text-on-dark-mute">
         2003 · 2026
-      </p>
-
-      <p className="mt-20 text-[9px] font-normal uppercase tracking-[0.28em] text-on-dark-mute/70">
-        300 SL — modell: vecarz.com via Sketchfab (CC BY)
       </p>
     </OverlaySection>
   );
