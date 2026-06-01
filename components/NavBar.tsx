@@ -76,32 +76,6 @@ export function NavBar() {
             </li>
           ))}
         </ul>
-
-        <div
-          className={`flex items-center gap-4 text-[11px] uppercase tracking-[0.28em] ${
-            isDark ? "text-on-dark-soft" : "text-foreground-soft"
-          }`}
-        >
-          <button
-            className={`hidden md:inline ${
-              isDark
-                ? "text-on-dark hover:text-on-dark-soft"
-                : "text-foreground hover:text-foreground-soft"
-            }`}
-          >
-            HU
-          </button>
-          <span className="hidden opacity-50 md:inline">·</span>
-          <button
-            className={`hidden md:inline ${
-              isDark
-                ? "text-on-dark-mute hover:text-on-dark"
-                : "text-foreground-mute hover:text-foreground"
-            }`}
-          >
-            EN
-          </button>
-        </div>
       </nav>
     </header>
   );
