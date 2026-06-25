@@ -29,9 +29,11 @@ export function Footer() {
 
           <div>
             <address className="not-italic text-sm font-light leading-relaxed text-on-dark-soft">
-              1239 Budapest
+              1113 Budapest
               <br />
-              Haraszti út 48
+              Váci út 96-98
+              <br />
+              (Mercedes-Benz Hungária Kft.)
             </address>
 
             <ul className="mt-6 space-y-3 text-sm font-light text-on-dark-soft">

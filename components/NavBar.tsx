@@ -9,16 +9,20 @@ const NAV = [
   { label: "Home", href: "/" },
   { label: "Tagok", href: "/tagok" },
   { label: "BPCGP", href: "/bpcgp" },
+  { label: "MB Classic", href: "/halozat" },
   { label: "Kapcsolat", href: "/kapcsolat" },
 ];
 
-const ALWAYS_DARK_PATHS = new Set(["/bpcgp"]);
+const ALWAYS_DARK_PATHS = new Set(["/bpcgp", "/halozat"]);
 
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const forceDark = ALWAYS_DARK_PATHS.has(pathname);
+  // trailingSlash: true miatt a pathname "/bpcgp/" alakú — normalizáljuk a záró perjelet
+  const normalizedPath =
+    pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
+  const forceDark = ALWAYS_DARK_PATHS.has(normalizedPath);
   const isDark = forceDark || scrolled || mobileOpen;
 
   useEffect(() => {

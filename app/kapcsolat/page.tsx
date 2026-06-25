@@ -101,6 +101,18 @@ export default function KapcsolatPage() {
                 Székhely
               </h2>
               <address className="not-italic text-lg font-light leading-relaxed text-foreground">
+                1113 Budapest
+                <br />
+                Váci út 96-98
+                <br />
+                (Mercedes-Benz Hungária Kft.)
+              </address>
+
+              <h2 className="mt-10 mb-6 flex items-center gap-4 text-[10px] font-normal uppercase tracking-[0.4em] text-foreground-mute">
+                <span className="h-px w-10 bg-foreground-mute/60" />
+                Klubhelyiség
+              </h2>
+              <address className="not-italic text-lg font-light leading-relaxed text-foreground">
                 1239 Budapest
                 <br />
                 Haraszti út 48

@@ -56,7 +56,7 @@ export default function BPCGPPage() {
                   közös élmény.
                 </p>
                 <p>
-                  A 2005 óta kétévente megrendezett esemény különleges
+                  A 2005 óta megrendezett esemény különleges
                   hangulatát az adja, hogy a komoly szakmai felkészültség és
                   a baráti, kötetlen légkör egyszerre van jelen. A rajtnál, az
                   útvonal mentén és a célállomáson a látogatók testközelből

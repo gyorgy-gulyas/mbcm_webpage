@@ -13,57 +13,14 @@ export const metadata: Metadata = {
   description: "A Mercedes-Benz Classic Magyarország Club aktív tagjai.",
 };
 
-const MEMBERS: string[] = [
-  "Árpás László",
-  "Bánáti Gábor",
-  "Barkó Iliász",
-  "Barkó Imre",
-  "Berényi Marcell",
-  "Bökfi János",
-  "Cselikovics János",
-  "Czellér Balázs",
-  "Erdélyi Zoltán",
-  "Faragó Ádám",
-  "Ferentzy Zoltán",
-  "Gaál Ádám",
-  "Gaál József",
-  "Gábeli Tibor",
-  "Gáspár Miklós",
-  "Grigalek Gábor",
-  "Gulyás György Tamás",
-  "Hesz Tamás",
-  "Janó Péter",
-  "Klemm Balázs",
-  "Kovács Attila",
-  "Kovács Miklós",
-  "Kövesdi Dénes",
-  "Laczházy Sebastian",
-  "Laczi Attila",
-  "Lastofka Péter",
-  "Leitner László",
-  "Liptay Gábor",
-  "Marosi György",
-  "Negyeliczky Sándor",
-  "Pásztor Tamás",
-  "Peltzer Márk",
-  "Poós László",
-  "Rhédey László",
-  "Szabó Endre",
-  "Török László",
-];
+// A tagok névsorát a tagság védelmében nem közöljük — csak a létszám jelenik meg.
+const MEMBER_COUNT = 36;
 
 const OFFICERS = [
   { name: "Marosi György", role: "Elnök", email: "president@mbcm.hu" },
   { name: "Barkó Imre", role: "Alelnök", email: "vice-president@mbcm.hu" },
   { name: "Lastofka Péter", role: "Titkár", email: "secretary@mbcm.hu" },
 ] as const;
-
-const ROLE_BY_NAME = new Map<string, string>(
-  OFFICERS.map((o) => [o.name, o.role])
-);
-
-const collator = new Intl.Collator("hu", { sensitivity: "base" });
-const sortedMembers = [...MEMBERS].sort(collator.compare);
 
 export default function TagokPage() {
   return (
@@ -87,7 +44,7 @@ export default function TagokPage() {
               Tagok
             </h1>
             <p className="mt-6 max-w-xl text-base font-light leading-relaxed text-foreground-soft md:text-[17px]">
-              {MEMBERS.length} aktív klubtag · 2003 óta közösen őrizzük
+              {MEMBER_COUNT} aktív klubtag · 2003 óta közösen őrizzük
               a Mercedes-Benz örökségét Magyarországon.
             </p>
           </header>
@@ -120,26 +77,11 @@ export default function TagokPage() {
               Klubtagok
             </h2>
 
-            <ul className="grid grid-cols-1 gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
-              {sortedMembers.map((name) => {
-                const role = ROLE_BY_NAME.get(name);
-                return (
-                  <li
-                    key={name}
-                    className="flex items-baseline justify-between border-b border-foreground/10 py-3"
-                  >
-                    <span className="text-base font-light text-foreground">
-                      {name}
-                    </span>
-                    {role && (
-                      <span className="text-[9px] font-normal uppercase tracking-[0.32em] text-foreground-mute">
-                        {role}
-                      </span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+            <p className="max-w-xl text-base font-light leading-relaxed text-foreground-soft md:text-[17px]">
+              A klub jelenleg {MEMBER_COUNT} aktív tagot számlál — lelkes
+              gyűjtők és rajongók közössége, akiket a klasszikus
+              Mercedes-Benz autók iránti szenvedély köt össze.
+            </p>
           </section>
 
           <div className="mt-20 border-t border-foreground/10 pt-10">

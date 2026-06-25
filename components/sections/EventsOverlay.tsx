@@ -18,16 +18,17 @@ export function EventsOverlay() {
       </p>
 
       <h2 className="text-[clamp(2rem,5vw,4rem)] font-light leading-[1.1] tracking-[-0.015em] text-foreground">
-        Az évszakok
+        Együtt,
         <br />
         <span className="font-extralight text-foreground-soft">
-          ritmusa.
+          egész évben.
         </span>
       </h2>
 
       <p className="mt-8 max-w-md text-base font-light leading-relaxed text-foreground-soft">
         Havi klubgyűlések, hétvégi túrák, szakmai előadások, családi
-        kirándulások. Minden évszak a maga rendezvényeivel.
+        kirándulások. Törekszünk minél több közös rendezvényt szervezni,
+        ahol a családtagok is részt vehetnek, ismerkedhetnek egymással.
       </p>
 
       <ul className="mt-10 space-y-4">

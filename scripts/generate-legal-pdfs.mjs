@@ -88,7 +88,7 @@ function footer(doc, text) {
   );
 
   h2(doc, "Székhely");
-  body(doc, "1239 Budapest, Haraszti út 48");
+  body(doc, "1113 Budapest, Váci út 96-98 (Mercedes-Benz Hungária Kft.)");
 
   h2(doc, "Jogi adatok");
   body(
@@ -142,7 +142,7 @@ function footer(doc, text) {
   h2(doc, "1. Adatkezelő");
   body(
     doc,
-    "Név: Mercedes-Benz Classic Magyarország Club\nSzékhely: 1239 Budapest, Haraszti út 48\nE-mail: president@mbcm.hu"
+    "Név: Mercedes-Benz Classic Magyarország Club\nSzékhely: 1113 Budapest, Váci út 96-98 (Mercedes-Benz Hungária Kft.)\nE-mail: president@mbcm.hu"
   );
 
   h2(doc, "2. Kezelt adatok köre");
